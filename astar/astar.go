@@ -88,8 +88,7 @@ func main() {
 				/* Already on openlist? Dont add again */
 				if !on_openlist[n.id] {
 					openlist = append(openlist, neighbors[i])
-				} else {
-				}
+				} 
 				/* Update neighbors g and parent only if path lucks better  */
 				if neighbors[i].g == -1 || (node.g+neighbors[i].g_hint < neighbors[i].g) {
 					if neighbors[i].parent != 0 {
