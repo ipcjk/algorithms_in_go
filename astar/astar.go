@@ -38,7 +38,7 @@ func main() {
 	var openlist []*vector
 	var on_openlist = make(map[int]bool)
 	var closedlist = make(map[int]bool)
-	var success = false
+	var success bool 
 	var endNode vector
 
 	/* Convert our ascii playground to a type "vector"-structure-based playground, assign ids and
@@ -111,7 +111,7 @@ func main() {
 
 	}
 
-	if success == true {
+	if success  {
 		fmt.Println("")
 		fmt.Println("solution in reversed steps from ending node")
 		for node := endNode; ; {
