@@ -88,7 +88,7 @@ func main() {
 				/* Already on openlist? Dont add again */
 				if !on_openlist[n.id] {
 					openlist = append(openlist, neighbors[i])
-				} 
+				}
 				/* Update neighbors g and parent only if path lucks better  */
 				if neighbors[i].g == -1 || (node.g+neighbors[i].g_hint < neighbors[i].g) {
 					if neighbors[i].parent != 0 {
@@ -255,19 +255,6 @@ func HeuManhattanDistance(a vector, b vector) (h int) {
 	return abs(a.x-b.x)*10 + abs(a.y-b.y)*10
 }
 
-func distance(a vector, b vector) (v vector) {
-	v.x = abs(a.x - b.x)
-	v.y = abs(a.y - b.y)
-	return v
-}
-
-func abs(x int) int {
-	if x < 0 {
-		return -x
-	}
-	return x
-}
-
 func findVectorByID(playfieldVectoren [][]vector, id int) (vector, error) {
 	for i, v := range playfieldVectoren {
 		for j := range v {
@@ -276,7 +263,7 @@ func findVectorByID(playfieldVectoren [][]vector, id int) (vector, error) {
 			}
 		}
 	}
-	return vector{}, fmt.Errorf("Vektor %d nicht gefunden", id)
+	return vector{}, fmt.Errorf("vector %d not found", id)
 }
 
 func findSpecialField(playfield [][]int, was int) (int, int, error) {
@@ -287,6 +274,14 @@ func findSpecialField(playfield [][]int, was int) (int, int, error) {
 			}
 		}
 	}
-	return 0, 0, fmt.Errorf("%d nicht gefunden", was)
+	return 0, 0, fmt.Errorf("%d not found", was)
+}
+
+
+func abs(x int) int {
+	if x < 0 {
+		return -x
+	}
+	return x
 }
 
