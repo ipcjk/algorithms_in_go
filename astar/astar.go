@@ -38,7 +38,7 @@ func main() {
 	var openlist []*vector
 	var on_openlist = make(map[int]bool)
 	var closedlist = make(map[int]bool)
-	var success bool 
+	var success bool
 	var endNode vector
 
 	/* Convert our ascii playground to a type "vector"-structure-based playground, assign ids and
@@ -70,7 +70,6 @@ func main() {
 
 		fmt.Println("Checking node:", node.id, "parent: ", node.parent)
 		printplayfield(playfieldVectoren, closedlist, on_openlist)
-
 
 		if node.object == END {
 			endNode = node
@@ -111,7 +110,7 @@ func main() {
 
 	}
 
-	if success  {
+	if success {
 		fmt.Println("")
 		fmt.Println("solution in reversed steps from ending node")
 		for node := endNode; ; {
@@ -203,7 +202,7 @@ func (v *vector) getNeighbors() []*vector {
 		neighbors = append(neighbors, &playfieldVectoren[v.x-1][v.y])
 	}
 	/* push neighbors left */
-	if v.y-1 >= 0 {
+	if v.y-1 >= 0 && playfieldVectoren[v.x][v.y-1].object == L {
 		playfieldVectoren[v.x][v.y-1].g_hint = 10
 		neighbors = append(neighbors, &playfieldVectoren[v.x][v.y-1])
 	}
@@ -277,11 +276,9 @@ func findSpecialField(playfield [][]int, was int) (int, int, error) {
 	return 0, 0, fmt.Errorf("%d not found", was)
 }
 
-
 func abs(x int) int {
 	if x < 0 {
 		return -x
 	}
 	return x
 }
-
